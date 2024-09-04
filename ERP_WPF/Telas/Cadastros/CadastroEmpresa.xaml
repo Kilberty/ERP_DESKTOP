@@ -1,0 +1,115 @@
+﻿<Window x:Class="ERP_WPF.Telas.Cadastros.CadastroEmpresa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ERP_WPF.Telas.Cadastros"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="CadastroEmpresa" Height="550" Width="950">
+    <Grid Background="{StaticResource Secundaria}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,40,0,0" FlowDirection="LeftToRight" Grid.Row="0" Height="60">
+            <StackPanel Height="50" Margin="40,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox Width="200" x:Name="Unidade" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Unidade"   FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,0" FlowDirection="LeftToRight" Height="40" Width="450">
+                <Label x:Name="DesativadoLabel" Visibility="Collapsed" FontSize="17" Margin="80,0,0,0" VerticalAlignment="Bottom" Foreground="Red" Content="Empresa desativada em : "></Label>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="60">
+            <StackPanel Margin="40,0,0,0" Orientation="Horizontal" FlowDirection="LeftToRight" Height="50">
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="410" FontSize="17" x:Name="NomeFantasia" materialDesign:HintAssist.Hint="Nome Fantasia"  VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="40,0,0,0" Orientation="Horizontal" FlowDirection="LeftToRight" Height="50">
+                <TextBox Width="410" materialDesign:HintAssist.Hint="Razão Social" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="RazaoSocial" FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Height="60">
+            <StackPanel Margin="40,0,0,0" Orientation="Horizontal" FlowDirection="LeftToRight" Height="60" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Height="50" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                    <TextBox Width="180" materialDesign:HintAssist.Hint="CEP" TextChanged="Textbox_CEP"  x:Name="CEP" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,5,0" FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                    <Button Background="{StaticResource Primaria}" Margin="10,0,0,0" VerticalAlignment="Center">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Icon:PackIconMaterial Kind="Magnify"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                    <ComboBox Width="250" Style="{StaticResource MaterialDesignFloatingHintComboBox}" IsEditable="True" materialDesign:HintAssist.Hint="Cidade" x:Name="Cidade" Margin="30,0,0,0" FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" VerticalAlignment="Center">
+                    <ComboBox Width="100" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="UF"  IsEditable="True" materialDesign:HintAssist.Hint="UF"  Margin="30,2,0,0" VerticalAlignment="Center" FontSize="17"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"   FlowDirection="LeftToRight" VerticalAlignment="Center" Margin="20,0,0,0">
+                    <TextBox Width="120" FontSize="17" x:Name="Numero" PreviewKeyDown="Textbox_Numero" materialDesign:HintAssist.Hint="Número" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="40,0,0,0" Height="60">
+            <StackPanel Height="50" Orientation="horizontal" FlowDirection="LeftToRight">
+                <TextBox Width="410" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="Endereco" materialDesign:HintAssist.Hint="Endereço"  FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Height="50" Orientation="horizontal" Margin="20,0,0,0" FlowDirection="LeftToRight">
+                <TextBox Width="160" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="Bairro" HorizontalContentAlignment="Left" materialDesign:HintAssist.Hint="Bairro" FontSize="17" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch"></TextBox>
+            </StackPanel>
+            <StackPanel Height="50" Orientation="horizontal" Margin="20,0,0,0" FlowDirection="LeftToRight">
+                <TextBox Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="17" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Complemento" VerticalContentAlignment="Center" ></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Height="60" Margin="40,0,0,0" Orientation="Horizontal" FlowDirection="LeftToRight">
+            <StackPanel Height="50">
+                <TextBox Width="250" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="cnpjForm" materialDesign:HintAssist.Hint="CNPJ" TextChanged="Textbox_CNPJ"  FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="20,0,0,0" Height="50">
+                <TextBox Width="210" FontSize="17" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="InscricaoEstadual" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Inscrição Estadual" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="20,0,0,0" Height="50">
+                <TextBox materialDesign:HintAssist.Hint="E-Mail" x:Name="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="190" FontSize="17" VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Height="70" Margin="40,0,0,0" FlowDirection="LeftToRight" Orientation="Horizontal">
+            <StackPanel Margin="0,0,0,0" Height="70">
+                <TextBox Width="180" materialDesign:HintAssist.Hint="Telefone 1" TextChanged="Textbox_Telefone" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="Telefone1" FontSize="17" ></TextBox>
+            </StackPanel>
+            <StackPanel Margin="20,0,0,0" Height="70">
+                <TextBox Width="180" FontSize="17" x:Name="Telefone2"  TextChanged="Textbox_Telefone" materialDesign:HintAssist.Hint="Telefone 2" Style="{StaticResource MaterialDesignFloatingHintTextBox}"   VerticalAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Width="500" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="20,0,0,0" Height="50">
+                <Label Content="Desativada" Margin="80,0,0,0" FontSize="19" VerticalAlignment="Center"></Label>
+                <CheckBox x:Name="Desativado" Checked="Check_Desativar" Unchecked="Check_Desativar" VerticalAlignment="Center"></CheckBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Orientation="Vertical" Margin="0,0,50,0" Height="60"  VerticalAlignment="Bottom" >
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" >
+                <Button Width="140" Click="Button_Salvar" Background="{StaticResource Primaria}" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                        <TextBlock Text="Salvar" Margin="0,0,10,0" ></TextBlock>
+                        <Icon:PackIconMaterial Kind="Floppy"  />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="804,35,0,0" TextWrapping="Wrap" x:Name="type" Visibility="Hidden" Text="TextBlock" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>

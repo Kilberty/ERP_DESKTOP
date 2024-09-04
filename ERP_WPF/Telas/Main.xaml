@@ -1,0 +1,202 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:ERP_WPF.Telas"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    x:Class="ERP_WPF.Telas.Main"
+    mc:Ignorable="d"
+    Title="Main" Height="720" Width="1080"
+    MinWidth="1080"
+    MinHeight="720"
+    WindowState="Maximized">
+
+    <Window.Resources>
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#EFF3F6"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#EFF3F6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+ 
+            <ColumnDefinition Width="*"/>
+    
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu Lateral -->
+        <Border Background="#5D47C8" Grid.Column="0">
+            <DockPanel LastChildFill="True">
+                <!-- Cabeçalho do Menu -->
+                <Border Height="100px" DockPanel.Dock="Top">
+                    <!-- Substitua com a sua logo -->
+                </Border>
+
+                <!-- Botões do Menu -->
+                <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top">
+                    <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10" Click="Button_Cadastros">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Folder" Margin="0,0,10,0"/>
+                            <TextBlock Text="Cadastros"/>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel x:Name="CadastrosHidden" Orientation="Vertical" Visibility="Collapsed">
+                        <Button Style="{StaticResource MenuButton}" Click="Button_Estoque" Margin="10" Padding="10">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="PackageVariantClosed" Margin="20,0,10,0"/>
+                                <TextBlock Text="Estoque"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel x:Name="EstoqueHidden" Orientation="Vertical" Visibility="Collapsed">
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="PackageVariant" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Produto"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Group" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Grupos"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Truck" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Fornecedores"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Factory" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Fabricantes"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <Button Style="{StaticResource MenuButton}" Click="Button_Pessoas" Margin="10" Padding="10">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Account" Margin="20,0,10,0"/>
+                                <TextBlock Text="Pessoas"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel x:Name="PessoasHidden" Orientation="Vertical" Visibility="Collapsed">
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccountBoxMultiple" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Clientes"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Click="Button_Funcionarios" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccountGroup" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Funcionários"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <Button Style="{StaticResource MenuButton}" Click="Button_Config"  Margin="10" Padding="10">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Cog" Margin="20,0,10,0"/>
+                                <TextBlock Text="Configurações"/>
+                            </StackPanel>
+                        </Button>
+                        <StackPanel x:Name="ConfigHidden" Visibility="Collapsed">
+                            <Button Style="{StaticResource MenuButton}" Margin="10" Click="Button_Empresas" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="OfficeBuilding" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Empresas"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource MenuButton}" Margin="10"  Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Cog" Margin="40,0,10,0"/>
+                                    <TextBlock Text="Configurações"/>
+                                </StackPanel>
+                            </Button>
+
+
+
+
+                        </StackPanel>   
+
+
+
+
+
+
+
+
+
+
+
+                    </StackPanel>
+                   
+                    
+                    
+                    
+                    <Button Style="{StaticResource MenuButton}" Margin="10" Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Cloud" Margin="0,0,10,0"/>
+                            <TextBlock Text="Compras"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource MenuButton}" Visibility="Collapsed" Click="Button_Vendas" Margin="10" Padding="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Cart" Margin="0,0,10,0"/>
+                            <TextBlock Text="Vendas"/>
+                        </StackPanel>
+                    </Button>
+                   
+                
+                
+                
+                
+                
+                
+                
+                </StackPanel>
+
+                <!-- Botão de Logoff -->
+                <Button Style="{StaticResource MenuButton}" Margin="10,0,0,10" Padding="10" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Logout" Margin="0,0,10,0"/>
+                        <TextBlock Text="Logoff"/>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+        </Border>
+
+        <!-- Conteúdo Principal -->
+        <Border Grid.Column="1">
+            <ContentControl x:Name="MainContent"/>
+        </Border>
+    </Grid>
+</Window>

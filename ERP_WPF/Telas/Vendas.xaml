@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="ERP_WPF.Telas.Vendas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERP_WPF.Telas"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="DataGrid" x:Key="DataGridStyle">
+            <Setter Property="Background" Value="#5D47C8" ></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Margin" Value="15,0,15,0"></Setter>
+         </Style>
+
+        <Style TargetType="DataGridColumnHeader" x:Key="Header">
+            <Setter Property="Background" Value="#EFF3F6"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+       
+        </Style>
+    
+    
+    </UserControl.Resources>
+    
+    
+    
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="160px" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Cabeçalho -->
+        <Grid Grid.Row="0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <StackPanel Height="40px" HorizontalAlignment="Right" Margin="0,10,20,0" Grid.Column="1">
+                    <Button Width="150px" Background="#5D47C8" Foreground="#EFF3F6" Content="Nova Venda" FontSize="16" Height="40px" />
+                </StackPanel>
+
+                <StackPanel Height="27px" Margin="0,20,0,0" HorizontalAlignment="Left" Orientation="Horizontal" >
+                    <DatePicker Width="120px" Margin="15,0,0,0" ></DatePicker>
+                    <TextBox Width="300px" Margin="50,0,0,0" ></TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+
+        </Grid>
+
+        <!-- DataGrid -->
+        <Grid Grid.Row="1">
+            <DataGrid CanUserResizeColumns="False"  Style="{StaticResource DataGridStyle}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Código"  Width="100"  HeaderStyle="{StaticResource Header}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cliente" Width="*" HeaderStyle="{StaticResource Header}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Data" Width="100" HeaderStyle="{StaticResource Header}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Valor" Width="100" HeaderStyle="{StaticResource Header}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Status" Width="100" HeaderStyle="{StaticResource Header}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+           
+        
+        
+        
+        
+        </Grid>
+
+
+
+        
+    </Grid>
+</UserControl>

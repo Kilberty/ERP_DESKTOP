@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="ERP_WPF.Telas.Cadastros.ListagemEmpresa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERP_WPF.Telas.Cadastros"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Primaria" Color="#5D47C8"/>
+        <SolidColorBrush x:Key="Secundaria" Color="#FFFFFF"/>
+
+        <Style TargetType="DataGrid" x:Key="DataStyle">
+            <Setter Property="Margin" Value="30,0,30,0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1,1,1,1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="LightGray"/>
+            <Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader" x:Key="Header">
+            <Setter Property="Background" Value="#EFF3F6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader" x:Key="HeaderID">
+            <Setter Property="Background" Value="#EFF3F6"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="DataGridRow" x:Key="RowStyle">
+            <EventSetter Event="MouseDoubleClick" Handler="AbrirCadastroEmpresa"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource Primaria}"/>
+                    <Setter Property="Foreground" Value="{StaticResource Secundaria}"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=DataGridRow}}" Value="True">
+                    <Setter Property="Background" Value="{StaticResource Primaria}"/>
+                    <Setter Property="Foreground" Value="{StaticResource Secundaria}"/>
+                </DataTrigger>
+                <Trigger Property="IsSelected" Value="True">
+
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Height="70px" Orientation="Horizontal" Margin="0,0,15,0" FlowDirection="RightToLeft">
+                <Button Width="100" Background="#5D47C8" Content="Novo" VerticalAlignment="Top" Margin="0,8,0,0" Click="Button_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,50,0,0">
+            <DataGrid IsReadOnly="True" x:Name="dataGridEmpresas" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" Style="{StaticResource DataStyle}" AutoGenerateColumns="False" RowStyle="{StaticResource RowStyle}" AutomationProperties.IsRowHeader="True" HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding id}" Header="Código" Width="100" HeaderStyle="{StaticResource HeaderID}"/>
+                    <DataGridTextColumn Binding="{Binding CNPJ}" Header="CNPJ" Width="200" HeaderStyle="{StaticResource Header}"/>
+                    <DataGridTextColumn Binding="{Binding NomeFantasia}" Header="Nome Fantasia" Width="*" HeaderStyle="{StaticResource Header}"/>
+                    <DataGridTextColumn Binding="{Binding RazaoSocial}" Header="Razão Social" Width="*" HeaderStyle="{StaticResource Header}"/>
+                    <DataGridTextColumn Binding="{Binding Desativada}" Header="Status" Width="100" HeaderStyle="{StaticResource HeaderID}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>
